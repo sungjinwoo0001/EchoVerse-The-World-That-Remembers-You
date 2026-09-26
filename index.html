@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EchoVerse: The World That Remembers You</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="title-block">
+        <h1 class="logo">ECHO<span>VERSE</span></h1>
+        <p class="subtitle">The world remembers what you do.</p>
+      </div>
+      <button id="newWorldBtn" class="btn btn-ghost">🌀 New World</button>
+    </div>
+  </header>
+
+  <main class="game">
+
+    <!-- STATUS BAR -->
+    <section class="status-bar" id="statusBar">
+      <div class="status-chip">
+        <span class="chip-label">Day</span>
+        <span class="chip-value" id="dayValue">1</span>
+      </div>
+      <div class="status-chip">
+        <span class="chip-label">Reputation</span>
+        <span class="chip-value" id="reputationValue">Neutral</span>
+      </div>
+      <div class="status-chip">
+        <span class="chip-label">Memories</span>
+        <span class="chip-value" id="memoryCount">0</span>
+      </div>
+      <div class="status-chip status-chip-wide">
+        <span class="chip-label">World State</span>
+        <span class="chip-value" id="worldState">Emberfall is quiet.</span>
+      </div>
+    </section>
+
+    <div class="layout">
+
+      <!-- VILLAGE -->
+      <section class="panel village-panel">
+        <h2 class="panel-title">🏘️ Emberfall Village</h2>
+        <div class="village-grid" id="villageGrid"></div>
+        <button id="exploreBtn" class="btn btn-explore">🧭 Explore the Village</button>
+        <div id="loreBox" class="lore-box hidden"></div>
+      </section>
+
+      <!-- DIALOGUE + ACTIONS -->
+      <section class="panel dialogue-panel">
+        <h2 class="panel-title">💬 Encounter</h2>
+        <div id="dialogueEmpty" class="dialogue-empty">
+          Choose someone in the village to begin.
+        </div>
+        <div id="dialogueContent" class="dialogue-content hidden">
+          <div class="npc-header">
+            <div class="npc-icon" id="npcIcon">🌿</div>
+            <div>
+              <div class="npc-name" id="npcName">—</div>
+              <div class="npc-role" id="npcRole">—</div>
+            </div>
+            <div class="trust-meter">
+              <div class="trust-label">Trust</div>
+              <div class="trust-bar"><div class="trust-fill" id="trustFill"></div></div>
+            </div>
+          </div>
+          <div class="speech-bubble" id="npcSpeech">...</div>
+          <div class="recent-event" id="recentEvent"></div>
+          <div class="action-buttons" id="actionButtons"></div>
+        </div>
+      </section>
+
+      <!-- MEMORY LOG -->
+      <section class="panel memory-panel">
+        <h2 class="panel-title">🧠 Memories of Emberfall</h2>
+        <div class="memory-list" id="memoryList">
+          <p class="memory-empty">Nothing remembered yet. The world is still waiting to know you.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div class="ember-field" id="emberField"></div>
+
+  <!-- INTRO SCREEN -->
+  <div id="introModal" class="modal">
+    <div class="modal-card intro-card">
+      <svg class="skyline" viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="40" width="45" height="50" fill="#1c2030"/>
+        <polygon points="10,40 32,20 55,40" fill="#232739"/>
+        <rect x="65" y="55" width="35" height="35" fill="#1a1d29"/>
+        <polygon points="65,55 82,38 100,55" fill="#232739"/>
+        <rect x="110" y="30" width="50" height="60" fill="#1c2030"/>
+        <polygon points="110,30 135,8 160,30" fill="#232739"/>
+        <rect x="250" y="45" width="40" height="45" fill="#1a1d29"/>
+        <polygon points="250,45 270,25 290,45" fill="#232739"/>
+        <rect x="300" y="35" width="55" height="55" fill="#1c2030"/>
+        <polygon points="300,35 327,15 355,35" fill="#232739"/>
+        <circle cx="330" cy="20" r="10" fill="#d9a441" opacity="0.85"/>
+      </svg>
+      <div class="modal-icon">🕯️</div>
+      <h2>EchoVerse</h2>
+      <p>You approach Emberfall as a stranger. No one here knows your name yet — but everyone will remember what you do with it. Six choices. Five lives touched. One ending only you can shape.</p>
+      <button id="beginBtn" class="btn btn-primary">Enter Emberfall</button>
+    </div>
+  </div>
+
+  <!-- MEMORY TOAST -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- ENDING MODAL -->
+  <div id="endingModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-icon" id="endingIcon">🌒</div>
+      <h2 id="endingTitle">Ending</h2>
+      <p id="endingText"></p>
+      <div class="modal-memories" id="endingMemories"></div>
+      <button id="restartBtn" class="btn btn-primary">Begin a New World</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
